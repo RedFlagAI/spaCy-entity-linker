@@ -133,11 +133,6 @@ Currently the only method for choosing an entity given different possible matche
 firstname) is max-prior. This method achieves around 70% accuracy on predicting the correct entities behind link
 descriptions on wikipedia.
 
-## Note
-
-The Entity Linker at the current state is still experimental and should not be used in production mode.
-NOTE: Redflag's SubjectModel filtering addresses these issues, making it suitable for our use case.
-
 ## Performance
 
 The current implementation supports only Sqlite. This is advantageous for development because it does not requirement
