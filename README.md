@@ -1,5 +1,9 @@
 # Spacy Entity Linker
 
+## Redflag Spacy Entity Linker
+
+This is a fork of egerber's [package of the same name](https://github.com/egerber/spaCy-entity-linker), used to support our SubjectModel.
+
 ## Introduction
 
 Spacy Entity Linker is a pipeline for spaCy that performs Linked Entity Extraction with Wikidata on a given Document.
@@ -21,6 +25,7 @@ It also comes along with a number of disadvantages:
 - it is slower than the spaCy implementation due to the use of a database for finding entities
 - no context sensitivity due to the implementation of the "max-prior method" for entitiy disambiguation (an improved
   method for this is in progress)
+  - NOTE: Redflag's implementation addresses this issue in our SubjectModel through our filtering system.
 
 ## Use
 
@@ -101,7 +106,7 @@ patriots_entity.pretty_print()
 football_team_entity = patriots_entity.get_super_entities()[0]
 football_team_entity.pretty_print()
 # OUTPUT:
-# https://www.wikidata.org/wiki/Q17156793 
+# https://www.wikidata.org/wiki/Q17156793
 # American football team          
 # organization, in which a group of players are organized to compete as a team in American football   
 
@@ -131,6 +136,7 @@ descriptions on wikipedia.
 ## Note
 
 The Entity Linker at the current state is still experimental and should not be used in production mode.
+NOTE: Redflag's SubjectModel filtering addresses these issues, making it suitable for our use case.
 
 ## Performance
 
@@ -156,7 +162,7 @@ It was cleaned and post-procesed, including filtering out entities of "overrepre
   * train stations
   * stars in the Galaxy
   * etc.
-  
+
 The purpose behind the knowledge base cleaning was to reduce the knowledge base size, while keeping the most useful entities for general purpose applications.
 
 Currently, the only way to change the knowledge base is a bit hacky and requires to replace or modify the underlying sqlite database. You will find it under <code>site_packages/data_spacy_entity_linker/wikidb_filtered.db</code>. The database contains 3 tables:
